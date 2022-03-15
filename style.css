@@ -1,8 +1,36 @@
+@font-face {
+  font-family: 'Baloo';
+  src: url('fonts/Baloo2-VariableFont_wght.ttf');
+}
+
 html,
 body {
   padding: 0rem;
   margin: 0;
   height: 100vh;
+  background-color: #dde1e7;
+  font-family: Baloo;
+  /* overflow: hidden; */
+}
+
+.active {
+  box-shadow: -9px -9px 15px #ffffff73, 9px 9px 15px rgba(94, 104, 121, 0.288);
+}
+
+.inactive {
+  box-shadow: inset -9px -9px 15px #ffffff73,
+    inset 9px 9px 15px rgba(94, 104, 121, 0.288);
+}
+
+.disableButton {
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.level-selector {
+  display: none;
+  height: 10rem;
+  width: 10rem;
 }
 
 .game-section {
@@ -14,7 +42,7 @@ body {
 .right-section {
   height: 100%;
   max-width: 60vw;
-  border: 1px solid black;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,10 +83,18 @@ body {
   display: none;
 }
 
-.section {
+.options-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-section {
   display: flex;
 
-  flex-direction: column;
+  flex-direction: row;
 
   margin: 0;
   margin-left: 10%;
@@ -67,10 +103,11 @@ body {
 
 .text-hidden {
   color: transparent;
+  box-shadow: -9px -9px 15px #ffffff73, 9px 9px 15px rgba(94, 104, 121, 0.288);
 }
 
 .text-hidden:hover {
-  color: transparent;
+  /* color: transparent; */
 }
 
 .is-hidden {
@@ -92,12 +129,24 @@ body {
 }
 
 .form-check {
-  background-color: rgba(0, 0, 0, 0.8);
-  width: 50%;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 5rem;
+  background-color: #dde1e7;
   padding: 15px 0;
-
+  margin: 20px 0;
   text-align: center;
+  border-radius: 15px;
+}
+
+#novice {
+  margin-top: 0;
+}
+
+#master {
+  margin-bottom: 0;
 }
 
 .form-check label:hover {
@@ -109,18 +158,38 @@ body {
 }
 
 #startBtn {
-  width: 50%;
+  width: 10rem;
+  height: 100%;
+  margin-left: 2rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #dde1e7;
+}
+
+.numberBtn {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #dde1e7;
+  border: none;
+  margin: 2rem 2rem;
+  font-size: 2rem;
 }
 #streak {
   display: block;
   font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.instructions {
+  margin-left: 2rem;
 }
 
 .chosen-level {
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  font-weight: bold;
+  box-shadow: inset -9px -9px 15px #ffffff73,
+    inset 9px 9px 15px rgba(94, 104, 121, 0.288);
 }
 
 @keyframes blinker {
@@ -128,160 +197,566 @@ body {
     opacity: 0;
   }
 }
+@media (orientation: landscape) {
+  @media (max-width: 1200px) {
+    #startBtn {
+      font-size: 1.5rem;
+      width: 8rem;
+    }
 
-@media (min-width: 2000px) {
-  .title {
-    font-size: 3rem;
-    font-weight: bold;
+    .form-check {
+      width: 13rem;
+      font-size: 1.4rem;
+    }
   }
-  .form-check {
-    width: 100%;
-    font-size: 2rem;
+  @media (max-width: 1100px) {
+    .numberBtn {
+      width: 8rem;
+      height: 8rem;
+    }
+    #startBtn {
+      font-size: 1.5rem;
+      width: 7rem;
+    }
+
+    .form-check {
+      width: 11rem;
+      font-size: 1.4rem;
+      height: 4rem;
+    }
+    .ready h3 {
+      font-size: 3rem;
+    }
   }
-  #startBtn {
-    width: 100%;
-    font-size: 2rem;
+
+  @media (max-width: 1000px) {
+    body {
+      width: 100vw;
+      overflow: hidden;
+      height: fit-content;
+    }
+    .game-section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: start;
+      align-items: flex-start;
+      flex-direction: column-reverse;
+    }
+    .ready h3 {
+      font-size: 3rem;
+    }
+
+    .quiz-quiz {
+      width: 100vw;
+    }
+
+    .options-section {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .right-section {
+      margin-left: 0;
+      height: 100%;
+      width: 100vw;
+      max-width: 100vw;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    #form {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .form-check {
+      display: none;
+    }
+    .level-selector {
+      display: inline-block;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 15rem;
+      height: 5rem;
+      background-color: #dde1e7;
+      padding: 15px 0;
+      margin: 20px 0;
+      text-align: center;
+      border-radius: 15px;
+      font-size: 1.5rem;
+    }
+
+    .chosen-level {
+      font-weight: normal;
+    }
+
+    #level-options {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    label {
+      display: inline-block;
+      padding: 0 1rem;
+    }
+
+    .ready {
+      height: 100%;
+      width: 100%;
+    }
+
+    .quiz {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container-startBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin-right: 1rem;
+      width: 100vw;
+    }
+
+    .quiz-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .quiz-quiz {
+      text-align: center;
+    }
+
+    #startBtn {
+      margin-left: 0;
+      width: 15rem;
+      height: 5rem;
+      margin-left: 2rem;
+    }
+    .quiz-btn {
+      font-size: 2rem;
+      width: 1rem;
+      padding: 0;
+    }
+
+    legend {
+      float: none;
+    }
+
+    #streak {
+      display: none;
+    }
+    #right {
+      margin-right: 2rem;
+    }
+    #left {
+      margin-left: 2rem;
+    }
+    .numberBtn {
+      width: 7rem;
+      height: 7rem;
+    }
   }
-  #difficulty legend {
-    font-size: 2rem;
+
+  @media (max-width: 800px) {
+    .numberBtn {
+      width: 6rem;
+      height: 6rem;
+    }
+    #startBtn {
+      font-size: 1.5rem;
+    }
+
+    .ready h3 {
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 700px) {
+    .game-section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: start;
+      align-items: flex-start;
+      flex-direction: column-reverse;
+    }
+    .numberBtn {
+      width: 5rem;
+      height: 5rem;
+      margin: 10px 10px;
+    }
+    .form-check {
+      display: none;
+    }
+    .level-selector {
+      display: inline-block;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 15rem;
+      height: 4rem;
+      background-color: #dde1e7;
+      padding: 15px 0;
+      margin: 20px 0;
+      text-align: center;
+      border-radius: 15px;
+      font-size: 1.5rem;
+    }
+    #startBtn {
+      width: 35%;
+      height: 4rem;
+      margin-left: 1.5rem;
+      font-size: 1.5rem;
+    }
+    .title {
+      margin-bottom: 0;
+      font-size: 1.5rem;
+    }
+    .ready h3 {
+      font-size: 2rem;
+    }
+    .container-startBtn {
+      flex-direction: row;
+    }
+    .steak {
+      display: none;
+    }
+    #right {
+      margin-right: 2rem;
+    }
+    #left {
+      margin-left: 2rem;
+    }
   }
 }
 
-@media (max-width: 1000px) {
-  legend {
-    text-align: center;
-  }
-  #difficulty {
-    text-align: center;
-  }
-  #streak {
-    text-align: center;
-  }
-  #startBtn {
-    margin-left: 0;
-  }
-  .ready {
-    text-align: center;
-  }
-  .game-section {
-    flex-direction: column;
-  }
-  .ready h3 {
-    font-size: 3rem;
-  }
-  .right-section {
-    margin-left: 0;
-    height: 200vh;
-  }
-}
-
-@media (max-width: 1000px) {
-  body {
-    width: 100vw;
-    overflow: hidden;
-    height: fit-content;
-  }
-  .game-section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    flex-direction: column-reverse;
+@media (orientation: portrait) {
+  @media (min-width: 2000px) {
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .form-check {
+      width: 100%;
+      font-size: 2rem;
+    }
+    #startBtn {
+      width: 100%;
+      font-size: 2rem;
+    }
+    #difficulty legend {
+      font-size: 2rem;
+    }
   }
 
-  .quiz-quiz {
-    width: 100vw;
+  @media (max-width: 1230px) {
+    #startBtn {
+      height: 5rem;
+      width: 15rem;
+      margin: 20px 0;
+    }
+
+    .form-check {
+      padding: 0;
+      font-size: 1.5rem;
+    }
+
+    #startBtn {
+      font-size: 1.5rem;
+    }
+
+    .options-section {
+      flex-direction: column;
+    }
+
+    .title {
+      margin-left: 2rem;
+    }
+
+    .numberBtn {
+      width: 8rem;
+      height: 8rem;
+    }
+
+    .ready h3 {
+      font-size: 5rem;
+    }
+  }
+  @media (max-width: 1000px) {
+    legend {
+      text-align: center;
+    }
+    #difficulty {
+      text-align: center;
+    }
+    #streak {
+      text-align: center;
+    }
+    #startBtn {
+      margin-left: 0;
+    }
+    .ready {
+      text-align: center;
+    }
+    .game-section {
+      flex-direction: column;
+    }
+    .ready h3 {
+      font-size: 3rem;
+    }
+    .right-section {
+      margin-left: 0;
+      height: 200vh;
+      border: none;
+    }
+
+    #novice {
+      margin-top: 1rem;
+    }
+    #streak {
+      display: none;
+    }
   }
 
-  .section {
-    width: 100%;
-    margin-left: 0;
+  @media (max-width: 1000px) {
+    body {
+      width: 100vw;
+      overflow: hidden;
+      height: fit-content;
+    }
+    .game-section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: start;
+      align-items: flex-start;
+      flex-direction: column-reverse;
+    }
+
+    .quiz-quiz {
+      width: 100vw;
+    }
+
+    .options-section {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .right-section {
+      margin-left: 0;
+      height: 100%;
+      width: 100vw;
+      max-width: 100vw;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    #form {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .form-check {
+      margin: 1rem 0.5rem;
+    }
+
+    .chosen-level {
+      font-weight: normal;
+    }
+
+    #level-options {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    label {
+      display: inline-block;
+      padding: 0 1rem;
+    }
+
+    .ready {
+      height: 100%;
+      width: 100%;
+    }
+
+    .quiz {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container-startBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 1rem;
+      width: 100vw;
+    }
+
+    .quiz-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .quiz-quiz {
+      text-align: center;
+    }
+
+    #startBtn {
+      margin-left: 0;
+      width: 50%;
+    }
+    .quiz-btn {
+      font-size: 2rem;
+      width: 1rem;
+      padding: 0;
+    }
+
+    legend {
+      float: none;
+    }
+
+    #streak {
+      text-align: center;
+      width: 20%;
+      margin-left: 0.5rem;
+    }
   }
 
-  .right-section {
-    margin-left: 0;
-    height: 100%;
-    width: 100vw;
-    max-width: 100vw;
+  @media (max-width: 700px) {
+    .form-check {
+      display: none;
+    }
+    .level-selector {
+      display: inline-block;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 15rem;
+      height: 5rem;
+      background-color: #dde1e7;
+      padding: 15px 0;
+      margin: 20px 0;
+      text-align: center;
+      border-radius: 15px;
+      font-size: 1.5rem;
+    }
+
+    #startBtn {
+      width: 35%;
+      margin-left: 1.5rem;
+    }
+    .container-startBtn {
+      flex-direction: row;
+    }
+
+    .level {
+      transition: 1s;
+    }
+
+    .fadeOutAnimation {
+      animation-duration: 0.5s;
+      animation-name: fadeOut;
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #right {
+      margin-right: 1rem;
+    }
+    #left {
+      margin-left: 1rem;
+    }
   }
 
-  .title {
-    text-align: center;
+  @media (max-width: 575px) {
+    .numberBtn {
+      width: 6rem;
+      height: 6rem;
+      margin: 1rem;
+    }
+    .level-selector {
+      width: 35%;
+      font-size: 1.2rem;
+      padding: 10px 0;
+      margin: 10px 0;
+    }
+
+    #startBtn {
+      width: 35%;
+      font-size: 1.2rem;
+      padding: 10px 0;
+      margin: 10px 10px;
+    }
+    .title {
+      font-size: 1.5rem;
+    }
   }
 
-  #form {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  }
+  @media (max-width: 300px) {
+    .right-section {
+      height: fit-content;
+      padding: 2rem 0;
+    }
+    .instructions {
+      margin-left: 0;
+      font-size: 1.3rem;
+    }
+    .numberBtn {
+      width: 5rem;
+      height: 5rem;
+      margin: 0.5rem;
+    }
+    .level-selector {
+      width: 35%;
+      font-size: 1.2rem;
+      padding: 10px 0;
+      margin: 10px 0;
+    }
 
-  .form-check {
-    margin: 1rem 0.5rem;
-  }
-
-  .chosen-level {
-    font-weight: normal;
-    border: 1px solid black;
-  }
-
-  #level-options {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  }
-
-  label {
-    display: inline-block;
-    padding: 0 1rem;
-  }
-
-  .ready {
-    height: 100%;
-    width: 100%;
-  }
-
-  .quiz {
-    height: 100%;
-    width: 100%;
-  }
-
-  .container-startBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-right: 1rem;
-    width: 100vw;
-  }
-
-  .quiz-options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .quiz-quiz {
-    text-align: center;
-  }
-
-  #startBtn {
-    margin-left: 0;
-    width: 50%;
-  }
-  .quiz-btn {
-    font-size: 2rem;
-    width: 1rem;
-    padding: 0;
-  }
-
-  legend {
-    float: none;
-  }
-
-  #streak {
-    text-align: center;
-    width: 20%;
-    margin-left: 0.5rem;
+    #startBtn {
+      width: 35%;
+      font-size: 1rem;
+      padding: 10px 0;
+      margin: 10px 10px;
+    }
+    .title {
+      font-size: 1.3rem;
+    }
   }
 }
